@@ -48,7 +48,40 @@ body {
   border: none;
   border-top: 1px solid #496ba8;
 }
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 
+  width: min(320px, 70%);
+  margin: 45px auto 25px;
+
+  color: #7891bb;
+}
+
+.section-divider span {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    #ccd7e8
+  );
+}
+
+.section-divider span:last-child {
+  background: linear-gradient(
+    to left,
+    transparent,
+    #ccd7e8
+  );
+}
+
+.section-divider div {
+  font-size: 20px;
+  line-height: 1;
+}
 
 /* ==================================================
    NAVBAR
