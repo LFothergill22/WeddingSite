@@ -1,0 +1,231 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="wedding.css">
+
+        <title> Laura & James Wedding</title>
+    </head>
+    <body>
+        <section class="hero">
+            <img src="Images/blue_flowers_left.png" class="side-image left-image" alt="">
+            <img src="Images/blue_flowers_right.png" class="side-image right-image" alt="">
+
+
+            <h1 id="names" >
+                Laura & James
+            </h1>
+
+            <div class="heart-line">
+                <span></span>
+                    <div class="heart">♡</div>
+                <span></span>
+            </div>
+
+            <p class="date">11 SEPETMBER 2027</p>
+
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="number" id="days">000</span>
+                    <span class="label">DAYS</span>
+                </div>
+
+                <div class="countdown-item">
+                    <span class="number" id="hours">00</span>
+                    <span class="label">HRS</span>
+                </div>
+
+                <div class="countdown-item">
+                    <span class="number" id="minutes">00</span>
+                    <span class="label">MINS</span>
+                </div>
+
+                <div class="countdown-item">
+                    <span class="number" id="seconds">00</span>
+                    <span class="label">SECS</span>
+                </div>
+            </div>
+        
+
+            <section class="venue-section">
+                <div class="venue-content">
+                    <p class="small-script">the wedding</p>
+
+                    <h2>CROPLEY HOUSE</h2>
+
+                    <p class="location">BAULKHAM HILLS, NSW</p>
+
+                    <img
+                    src="images/cropley-house.png"
+                    alt="Cropley House"
+                    class="venue-image"
+                    >
+
+                    <p class="venue-message">
+                    We can't wait to celebrate with you<br>
+                    at our dream venue.
+                    </p>
+
+                    <div class="venue-heart">♡</div>
+                </div>
+            </section>
+        </section>
+
+        <section class="information-section">
+
+            <div class="information-grid">
+
+                <a href="rsvp.html" class="information-card">
+                <img class="clip_art" src="Images/letter.png"/>
+                <br>
+
+                <h3>RSVP</h3>
+
+                <p>
+                    Kindly RSVP<br>
+                    by 1 August 2027.
+                </p>
+
+                <span>RSVP NOW →</span>
+                </a>
+
+                <a href="Day_of.html" class="information-card">
+                <img class="clip_art" src="Images/timeline.png"/>
+                <br>
+
+                <h3>DAY OF DETAILS</h3>
+
+                <p>
+                    Everything you<br>
+                    need to know<br>
+                    for the day.
+                </p>
+
+                <span>VIEW DETAILS →</span>
+                </a>
+
+                <a href="info.html#accommodation" class="information-card">
+                <img class="clip_art" src="Images/Dress.png"/>
+                <br>
+
+                <h3>DRESS CODE</h3>
+
+                <p>
+                    Dress to impress<br>
+                    in formal attire.
+                </p>
+
+                <span>VIEW DETAILS →</span>
+                </a>
+
+                <a href="info.html#accommodation" class="information-card">
+                <img class="clip_art" src="Images/bed.png"/>
+                <br>
+
+                <h3>ACCOMMODATION</h3>
+
+                <p>
+                    Hotel options and<br>
+                    accommodation<br>
+                    information.
+                </p>
+
+                <span>VIEW DETAILS →</span>
+                </a>
+
+                <a href="info.html#gift-registry" class="information-card">
+                <img class="clip_art" src="Images/gift (1).png"/>
+                <br>
+
+                <h3>GIFT REGISTRY</h3>
+
+                <p>
+                    Your presence is<br>
+                    the greatest gift.<br>
+                    If you wish to give,<br>
+                    see our registry.
+                </p>
+
+                <span>VIEW DETAILS →</span>
+                </a>
+
+                <a href="info.html#faq" class="information-card">
+                <img class="clip_art" src="Images/faq.png"/>
+                <br>
+
+                <h3>FAQ</h3>
+
+                <p>
+                    Find answers to<br>
+                    commonly asked<br>
+                    questions.
+                </p>
+
+                <span>VIEW DETAILS →</span>
+
+                </a>
+
+                
+
+            </div>
+
+            <div class="information-footer">
+                <p>We can't wait to celebrate with you</p>
+
+                <div class="heart-divider">
+                <span></span>
+                <div>❧</div>
+                <span></span>
+                </div>
+
+                <div class="small-heart">♡</div>
+            </div>
+
+        </section>
+
+            <script src="https://unpkg.com/lucide@latest"></script>
+
+            <script>lucide.createIcons();</script>
+        
+
+    </body>
+
+    <script>
+    const weddingDate = new Date("September 11, 2027 16:30:00").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        if (distance <= 0) {
+        document.querySelector(".countdown").innerHTML =
+            "<p class='wedding-message'>Today is the day!</p>";
+        return;
+        }
+
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+        (distance % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor(
+        (distance % (1000 * 60)) / 1000
+        );
+
+        document.getElementById("days").textContent = days;
+        document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+        document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+        document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    </script>
+</html>

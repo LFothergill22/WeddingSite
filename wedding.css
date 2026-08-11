@@ -1,0 +1,1108 @@
+/* ==================================================
+   FONTS
+================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap");
+
+@font-face {
+  font-family: "Brittany Signature";
+  src: url("Fonts/BrittanySignature.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Northwell";
+  src: url("Fonts/Northwell.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Didot";
+  src: url("Fonts/Didot.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* ==================================================
+   GENERAL PAGE STYLING
+================================================== */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  background-color: #ffffff;
+  color: #45669f;
+}
+
+.large {
+  width: min(800px, 90%);
+  margin: 20px auto;
+  border: none;
+  border-top: 1px solid #496ba8;
+}
+
+
+/* ==================================================
+   NAVBAR
+================================================== */
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 25px;
+
+  padding: 20px;
+
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 2px;
+
+  background-color: rgba(255, 255, 255, 0.96);
+  border-bottom: 1px solid #e1e6ef;
+}
+
+.navbar a {
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  color: #45669f;
+}
+
+.navbar a:hover {
+  color: #7d98c3;
+}
+
+
+/* ==================================================
+   HERO SECTION
+================================================== */
+
+.hero {
+  position: relative;
+  min-height: 700px;
+  overflow: hidden;
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.side-image {
+  position: absolute;
+  top: 0;
+  width: 900px;
+  max-width: 65%;
+  height: auto;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.left-image {
+  left: 0;
+}
+
+.right-image {
+  right: 0;
+}
+
+
+/* ==================================================
+   NAMES AND DATE
+================================================== */
+
+#names {
+  padding-top: 30px;
+  margin: 0;
+
+  font-family: "Brittany Signature", cursive;
+  font-size: 100px;
+  font-weight: normal;
+  text-align: center;
+  color: #274c77;
+}
+
+.date {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #274c77;
+}
+
+
+/* ==================================================
+   HEART DIVIDER
+================================================== */
+
+.heart-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  width: 240px;
+  margin: 20px auto;
+}
+
+.heart-line span {
+  flex: 1;
+  height: 1px;
+  background-color: #ccd7e8;
+}
+
+.heart {
+  font-size: 18px;
+  color: #7891bb;
+}
+
+
+/* ==================================================
+   COUNTDOWN
+================================================== */
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 40px auto;
+
+  font-family: "Montserrat", sans-serif;
+  letter-spacing: 2px;
+  color: #355a9a;
+}
+
+.countdown-item {
+  min-width: 80px;
+  padding: 0 22px;
+  text-align: center;
+  border-right: 1px solid #d7deea;
+}
+
+.countdown-item:last-child {
+  border-right: none;
+}
+
+.number {
+  display: block;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.label {
+  display: block;
+  margin-top: 8px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.wedding-message {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 28px;
+  letter-spacing: 2px;
+}
+
+
+/* ==================================================
+   SCRIPT TEXT
+================================================== */
+
+.small-script,
+.section-script {
+  margin: 0;
+
+  font-family: "Northwell", "Allura", cursive;
+  font-size: 30px;
+  font-weight: normal;
+  color: #7891bb;
+}
+
+
+/* ==================================================
+   VENUE SECTION
+================================================== */
+
+.venue-section {
+  width: 100%;
+  padding: 80px 20px 25px;
+  box-sizing: border-box;
+
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.venue-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.venue-content h2 {
+  margin: 0;
+
+  font-family: "Didot", "Cormorant Garamond", serif;
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: 7px;
+  color: #365a98;
+}
+
+.location {
+  margin: 5px 0 12px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: #365a98;
+}
+
+.venue-image {
+  display: block;
+  width: min(760px, 100%);
+  height: auto;
+  margin: 0 auto;
+}
+
+.venue-message {
+  margin: 10px 0 0;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  color: #365a98;
+}
+
+.venue-heart {
+  margin-top: 8px;
+  font-size: 23px;
+  color: #7a98c9;
+}
+
+
+/* ==================================================
+   INFORMATION CARDS
+================================================== */
+
+.information-section {
+  position: relative;
+  width: 100%;
+  padding: 55px 35px 35px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.information-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+  max-width: 1900px;
+  margin: 0 auto;
+  align-items: stretch;
+}
+
+.information-card {
+  width: 100%;
+  min-width: 0;
+  min-height: 280px;
+  box-sizing: border-box;
+
+  padding: 24px 16px 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  text-align: center;
+  text-decoration: none;
+
+  color: #496ba7;
+  background-color: rgba(255, 255, 255, 0.88);
+
+  border: 1px solid #d9deea;
+  border-radius: 5px;
+}
+
+.information-card:hover {
+  transform: translateY(-5px);
+  background-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(67, 97, 145, 0.12);
+}
+
+.information-card svg {
+  width: 38px;
+  height: 38px;
+  margin-bottom: 19px;
+
+  stroke-width: 1.2;
+  color: #6988bd;
+}
+
+.information-card h3 {
+  margin: 0 0 17px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: #3f6099;
+}
+
+.information-card p {
+  margin: 0;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  line-height: 1.75;
+  letter-spacing: 0.3px;
+  color: #6982ae;
+}
+
+.information-card span {
+  margin-top: auto;
+  padding-top: 22px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  color: #42639d;
+}
+
+.clip_art {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 18px;
+}
+
+.information-card h3,
+.information-card p {
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+
+/* ==================================================
+   INFORMATION FOOTER
+================================================== */
+
+.information-footer {
+  position: relative;
+  z-index: 2;
+
+  margin-top: 38px;
+  padding-bottom: 5px;
+}
+
+.information-footer p {
+  margin: 0 0 12px;
+
+  font-family: "Northwell", "Allura", cursive;
+  font-size: 32px;
+  font-weight: normal;
+  color: #6684b7;
+}
+
+.heart-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  width: 230px;
+  margin: 0 auto;
+
+  color: #7390bd;
+}
+
+.heart-divider span {
+  flex: 1;
+  height: 1px;
+  background-color: #ccd7e8;
+}
+
+.heart-divider div {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.small-heart {
+  margin-top: 3px;
+  font-size: 15px;
+  color: #6e8dc1;
+}
+
+
+/* ==================================================
+   INFORMATION PAGE HEADER
+================================================== */
+
+.info-header {
+  padding: 80px 20px 60px;
+  text-align: center;
+}
+
+.info-header h1 {
+  margin: 5px 0 20px;
+
+  font-family: "Didot", "Cormorant Garamond", serif;
+  font-size: 38px;
+  font-weight: 400;
+  letter-spacing: 7px;
+}
+
+.info-page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 25px 80px;
+}
+
+
+/* ==================================================
+   INFORMATION PAGE SECTIONS
+================================================== */
+
+.info-section {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  align-items: center;
+  gap: 60px;
+
+  min-height: 420px;
+  padding: 70px 50px;
+  box-sizing: border-box;
+
+  border-top: 1px solid #dde4ef;
+}
+
+.info-section.reverse {
+  grid-template-columns: 1fr 180px;
+}
+
+.info-section.reverse .info-icon {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.info-section.reverse .info-text {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.info-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 160px;
+  height: 160px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 58px;
+  color: #7390bd;
+
+  border: 1px solid #d6dfec;
+  border-radius: 50%;
+}
+
+.info-text h2,
+.faq-section h2 {
+  margin: 5px 0 25px;
+
+  font-family: "Didot", "Cormorant Garamond", serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  color: #3f6099;
+}
+
+.info-text p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  line-height: 2;
+  color: #637da9;
+}
+
+.info-button {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 13px 24px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+
+  text-decoration: none;
+  color: #45669f;
+
+  border: 1px solid #9fb1cf;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.info-button:hover {
+  color: #ffffff;
+  background-color: #45669f;
+}
+
+
+/* ==================================================
+   FAQ SECTION
+================================================== */
+
+.faq-section {
+  padding: 80px 50px;
+  text-align: center;
+  border-top: 1px solid #dde4ef;
+}
+
+.faq-item {
+  max-width: 750px;
+  margin: 12px auto;
+
+  font-family: "Montserrat", sans-serif;
+  text-align: left;
+
+  border: 1px solid #dbe2ed;
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.faq-item summary {
+  padding: 18px 20px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #45669f;
+
+  cursor: pointer;
+}
+
+.faq-item p {
+  margin: 0;
+  padding: 0 20px 20px;
+
+  font-size: 12px;
+  line-height: 1.8;
+  color: #667fa8;
+}
+
+
+/* ==================================================
+   TABLET RESPONSIVE STYLING
+================================================== */
+
+@media (max-width: 1000px) {
+  .information-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .side-image {
+    width: 650px;
+  }
+}
+
+
+/* ==================================================
+   MOBILE RESPONSIVE STYLING
+================================================== */
+
+@media (max-width: 700px) {
+  .navbar {
+    gap: 12px;
+    padding: 15px 10px;
+  }
+
+  .navbar a {
+    font-size: 8px;
+  }
+
+  #names {
+    font-size: 65px;
+  }
+
+  .date {
+    font-size: 14px;
+    letter-spacing: 3px;
+  }
+
+  .hero {
+    min-height: 550px;
+  }
+
+  .side-image {
+    width: 400px;
+    max-width: 80%;
+    opacity: 0.7;
+  }
+
+  .countdown-item {
+    min-width: 55px;
+    padding: 0 10px;
+  }
+
+  .number {
+    font-size: 25px;
+  }
+
+  .label {
+    font-size: 7px;
+    letter-spacing: 1px;
+  }
+
+  .venue-section {
+    padding: 30px 10px 20px;
+  }
+
+  .small-script,
+  .section-script {
+    font-size: 26px;
+  }
+
+  .venue-content h2 {
+    font-size: 24px;
+    letter-spacing: 4px;
+  }
+
+  .location {
+    font-size: 8px;
+    letter-spacing: 2px;
+  }
+
+  .venue-message {
+    font-size: 10px;
+  }
+
+  .information-section {
+    padding: 35px 18px 30px;
+  }
+
+  .information-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .information-card {
+    min-height: 250px;
+  }
+
+  .info-header {
+    padding: 55px 15px 40px;
+  }
+
+  .info-header h1 {
+    font-size: 27px;
+    letter-spacing: 4px;
+  }
+
+  .info-section,
+  .info-section.reverse {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    min-height: auto;
+    padding: 55px 20px;
+
+    text-align: center;
+  }
+
+  .info-section.reverse .info-icon,
+  .info-section.reverse .info-text {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .info-icon {
+    width: 115px;
+    height: 115px;
+    font-size: 42px;
+  }
+
+  .info-text h2,
+  .faq-section h2 {
+    font-size: 23px;
+    letter-spacing: 3px;
+  }
+
+  .faq-section {
+    padding: 55px 10px;
+  }
+}
+
+
+/* ==================================================
+   SMALL PHONE RESPONSIVE STYLING
+================================================== */
+
+@media (max-width: 480px) {
+  .information-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .information-card {
+    min-height: 230px;
+  }
+
+  .information-footer p {
+    font-size: 27px;
+  }
+
+  .countdown-item {
+    min-width: 45px;
+    padding: 0 7px;
+  }
+
+  .number {
+    font-size: 21px;
+  }
+
+  .heart-line {
+    width: 200px;
+  }
+}
+
+
+/* ====================================
+=                 RSVP                =
+==================================== */
+.code-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+  box-sizing: border-box;
+
+  background-color: rgba(245, 248, 252, 0.94);
+}
+
+.code-modal.hidden {
+  display: none;
+}
+
+.code-modal-content {
+  width: min(460px, 100%);
+  padding: 55px 45px;
+  box-sizing: border-box;
+
+  text-align: center;
+  background-color: #ffffff;
+
+  border: 1px solid #d6dfec;
+  box-shadow: 0 18px 50px rgba(55, 82, 125, 0.12);
+}
+
+.code-modal-content h1,
+.rsvp-header h1 {
+  margin: 6px 0 22px;
+
+  font-family: "Didot", "Cormorant Garamond", serif;
+  font-size: 34px;
+  font-weight: 400;
+  letter-spacing: 7px;
+  color: #365a98;
+}
+
+.code-modal-content p,
+.rsvp-header p,
+.success-message p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #6982ae;
+}
+
+.code-modal-content input,
+.contact-section input,
+.field-group input,
+.dietary-section textarea {
+  width: 100%;
+  padding: 14px;
+  box-sizing: border-box;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  color: #45669f;
+
+  background-color: #ffffff;
+  border: 1px solid #cdd8e8;
+  outline: none;
+}
+
+.code-modal-content input {
+  margin-top: 14px;
+  text-align: center;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.code-modal-content input:focus,
+.contact-section input:focus,
+.field-group input:focus,
+.dietary-section textarea:focus {
+  border-color: #7896c5;
+}
+
+.code-modal-content button,
+.rsvp-submit {
+  margin-top: 22px;
+  padding: 14px 30px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.8px;
+
+  color: #ffffff;
+  background-color: #45669f;
+
+  border: 1px solid #45669f;
+  cursor: pointer;
+}
+
+.code-modal-content button:disabled,
+.rsvp-submit:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.form-error {
+  min-height: 20px;
+  margin: 12px 0 0;
+  color: #a44b55 !important;
+}
+
+.rsvp-page {
+  display: none;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 80px 25px;
+}
+
+.rsvp-page.active {
+  display: block;
+}
+
+.rsvp-header {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.guest-card {
+  margin-bottom: 22px;
+  padding: 35px;
+  box-sizing: border-box;
+
+  background-color: #ffffff;
+  border: 1px solid #d9e1ed;
+}
+
+.guest-card h2 {
+  margin: 0 0 25px;
+
+  font-family: "Cormorant Garamond", serif;
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #3f6099;
+}
+
+.attendance-options {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.attendance-choice {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 16px;
+  box-sizing: border-box;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 11px;
+  color: #637da9;
+
+  border: 1px solid #d6dfec;
+  cursor: pointer;
+}
+
+.attendance-choice:has(input:checked) {
+  color: #ffffff;
+  background-color: #6988bd;
+  border-color: #6988bd;
+}
+
+.attendance-choice input {
+  accent-color: #45669f;
+}
+
+.field-group,
+.dietary-section,
+.contact-section {
+  margin-top: 22px;
+}
+
+.field-group label,
+.dietary-section label,
+.contact-section label {
+  display: block;
+  margin-bottom: 9px;
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  color: #45669f;
+}
+
+.dietary-section textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.contact-section {
+  max-width: 500px;
+  margin: 35px auto;
+}
+
+.rsvp-submit {
+  display: block;
+  margin: 30px auto 0;
+}
+
+.success-message {
+  display: none;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.success-message.active {
+  display: block;
+}
+
+.success-message h2 {
+  font-family: "Didot", "Cormorant Garamond", serif;
+  font-size: 28px;
+  font-weight: 400;
+  letter-spacing: 5px;
+  color: #365a98;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 650px) {
+  .code-modal-content {
+    padding: 40px 22px;
+  }
+
+  .rsvp-page {
+    padding: 55px 15px;
+  }
+
+  .guest-card {
+    padding: 25px 18px;
+  }
+
+  .attendance-options {
+    flex-direction: column;
+  }
+
+  .code-modal-content h1,
+  .rsvp-header h1 {
+    font-size: 27px;
+    letter-spacing: 4px;
+  }
+}
+
+
+.success-message {
+  display: none;
+  padding: 70px 20px;
+  text-align: center;
+}
+
+.success-message.active {
+  display: block;
+}
+
+/* ====================================
+=           Save the Date             =
+==================================== */
+
+.save-the-date-message {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 20px 5px;
+  text-align: center;
+}
+
+.save-the-date-message h2 {
+  margin: 5px 0 5px;
+  font-family: "Didot", "Cormorant Garamond", serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 6px;
+  color: #365a98;
+}
+
+.save-the-date-message p {
+  font-family: "Montserrat", sans-serif;
+  font-size: 13px;
+  line-height: 2;
+  color: #637da9;
+}
+
+.invitation-note {
+  margin-top: 5px;
+  font-size: 10px !important;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+        <title>RSVP | Laura & James</title>
+
+        <link rel="stylesheet" href="wedding.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    </head>
+
+    <body>
+
+        <nav class="navbar">
+            <a href="index.html">HOME</a>
+            <a href="info.html">DETAILS</a>
+            <a href="Day_of.html">DAY OF</a>
+        </nav>
+
+        <div class="code-modal" id="codeModal">
+            <div class="code-modal-content">
+            <p class="small-script">welcome</p>
+            <h1>RSVP</h1>
+
+            <p>
+                Enter the invitation code printed on your invitation.
+            </p>
+
+            <input
+                type="text"
+                id="inviteCode"
+                placeholder="Invitation code"
+                autocomplete="off"
+            >
+
+            <p
+                class="form-error"
+                id="codeError"
+                aria-live="polite"
+            ></p>
+
+            <button type="button" id="codeButton">
+                CONTINUE
+            </button>
+            </div>
+        </div>
+
+        <main class="rsvp-page" id="rsvpPage">
+            <header class="rsvp-header">
+            <p class="small-script">
+                we hope you can join us
+            </p>
+
+            <h1>YOUR INVITATION</h1>
+
+            <p id="groupWelcome"></p>
+            </header>
+
+            <form id="rsvpForm">
+            <div id="guestList"></div>
+
+            <p
+                class="form-error"
+                id="formError"
+                aria-live="polite"
+            ></p>
+
+            <button type="submit" class="rsvp-submit">
+                SUBMIT RSVP
+            </button>
+            </form>
+
+            <section class="success-message"id="successMessage">
+            <p class="small-script">thank you</p>
+
+            <h2>YOUR RSVP HAS BEEN RECEIVED</h2>
+
+            <p>
+                We cannot wait to celebrate with you.
+            </p>
+            </section>
+        </main>
+        
+        <script>
+            const SUPABASE_URL = "https://gcuumradbigwjwxkexfz.supabase.co";
+            const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdjdXVtcmFkYmlnd2p3eGtleGZ6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODE5NTExNDcsImV4cCI6MjA5NzUyNzE0N30.Ew0OlDRQmV_YiuffHJ8UctU1gyEaaPegL-yBRk_ayP4";
+
+            const supabaseClient = supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_ANON_KEY
+            );
+
+            const codeModal = document.getElementById("codeModal");
+            const inviteCodeInput = document.getElementById("inviteCode");
+            const codeButton = document.getElementById("codeButton");
+            const codeError = document.getElementById("codeError");
+
+            const rsvpPage = document.getElementById("rsvpPage");
+            const rsvpForm = document.getElementById("rsvpForm");
+            const guestList = document.getElementById("guestList");
+            const groupWelcome = document.getElementById("groupWelcome");
+            const contactEmail = document.getElementById("contactEmail");
+            const formError = document.getElementById("formError");
+            const successMessage = document.getElementById("successMessage");
+
+            let activeInviteCode = "";
+            let loadedGuests = [];
+
+            codeButton.addEventListener("click", checkInvitationCode);
+
+            inviteCodeInput.addEventListener("keydown", (event) => {
+            if (event.key === "Enter") {
+                checkInvitationCode();
+            }
+            });
+
+            rsvpForm.addEventListener("submit", submitRsvp);
+
+            async function checkInvitationCode() {
+            codeError.textContent = "";
+
+            const enteredCode = inviteCodeInput.value.trim();
+
+            if (!enteredCode) {
+                codeError.textContent =
+                "Please enter your invitation code.";
+                return;
+            }
+
+            codeButton.disabled = true;
+            codeButton.textContent = "CHECKING...";
+
+            const { data, error } = await supabaseClient.rpc(
+                "get_rsvp_group",
+                {
+                entered_code: enteredCode
+                }
+            );
+
+            codeButton.disabled = false;
+            codeButton.textContent = "CONTINUE";
+
+            if (error) {
+                console.error(error);
+
+                codeError.textContent =
+                "We could not check that code. Please try again.";
+                return;
+            }
+
+            if (!data || data.length === 0) {
+                codeError.textContent =
+                "We could not find that invitation code.";
+                return;
+            }
+
+            activeInviteCode = enteredCode;
+            loadedGuests = data;
+
+            showRsvpGroup(data);
+            }
+
+            function showRsvpGroup(rows) {
+            const firstRow = rows[0];
+
+            groupWelcome.textContent =
+                firstRow.group_name
+                ? `Invitation for ${firstRow.group_name}`
+                : "Please respond for each invited guest.";
+
+            contactEmail.value = firstRow.contact_email || "";
+
+            guestList.innerHTML = "";
+
+            rows.forEach((guest) => {
+                guestList.appendChild(createGuestCard(guest));
+            });
+
+            codeModal.classList.add("hidden");
+            rsvpPage.classList.add("active");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+            }
+
+            function createGuestCard(guest) {
+            const card = document.createElement("section");
+            card.className = "guest-card";
+            card.dataset.guestId = String(guest.guest_id);
+            card.dataset.isPlusOne = String(guest.is_plus_one);
+
+            const title = document.createElement("h2");
+            title.textContent = guest.is_plus_one
+                ? "Plus One"
+                : guest.guest_name;
+
+            card.appendChild(title);
+
+            if (guest.is_plus_one) {
+                const nameGroup = document.createElement("div");
+                nameGroup.className = "field-group plus-one-name";
+
+                nameGroup.innerHTML = `
+                <label for="guest-name-${guest.guest_id}">
+                    Guest name
+                </label>
+
+                <input
+                    type="text"
+                    id="guest-name-${guest.guest_id}"
+                    class="guest-name-input"
+                    placeholder="Enter your guest's full name"
+                    value="${escapeHtml(guest.guest_name || "")}"
+                >
+                `;
+
+                card.appendChild(nameGroup);
+            }
+
+            const attendance = document.createElement("div");
+            attendance.className = "attendance-options";
+
+            attendance.innerHTML = `
+                <label class="attendance-choice">
+                <input
+                    type="radio"
+                    name="attendance-${guest.guest_id}"
+                    value="true"
+                    ${guest.attending === true ? "checked" : ""}
+                >
+                <span>Joyfully accepts</span>
+                </label>
+
+                <label class="attendance-choice">
+                <input
+                    type="radio"
+                    name="attendance-${guest.guest_id}"
+                    value="false"
+                    ${guest.attending === false ? "checked" : ""}
+                >
+                <span>Regretfully declines</span>
+                </label>
+            `;
+
+            card.appendChild(attendance);
+
+            const dietarySection = document.createElement("div");
+            dietarySection.className = "dietary-section";
+
+            dietarySection.innerHTML = `
+                <label for="dietary-${guest.guest_id}">
+                Dietary requirements
+                </label>
+
+                <textarea
+                id="dietary-${guest.guest_id}"
+                class="dietary-input"
+                placeholder="Allergies or dietary requirements"
+                >${escapeHtml(guest.dietary_requirements || "")}</textarea>
+            `;
+
+            card.appendChild(dietarySection);
+
+            const attendanceInputs =
+                attendance.querySelectorAll("input[type='radio']");
+
+            attendanceInputs.forEach((input) => {
+                input.addEventListener("change", () => {
+                updateGuestCardVisibility(card);
+                });
+            });
+
+            updateGuestCardVisibility(card);
+
+            return card;
+            }
+
+            function updateGuestCardVisibility(card) {
+            const selectedAttendance = card.querySelector(
+                "input[type='radio']:checked"
+            );
+
+            const dietarySection = card.querySelector(
+                ".dietary-section"
+            );
+
+            const plusOneName = card.querySelector(
+                ".plus-one-name"
+            );
+
+            const isAttending =
+                selectedAttendance?.value === "true";
+
+            dietarySection.hidden = !isAttending;
+
+            if (plusOneName) {
+                plusOneName.hidden = !isAttending;
+            }
+            }
+
+            async function submitRsvp(event) {
+            event.preventDefault();
+
+            formError.textContent = "";
+
+            const cards = [
+                ...document.querySelectorAll(".guest-card")
+            ];
+
+            const responses = [];
+
+            for (const card of cards) {
+                const guestId = Number(card.dataset.guestId);
+
+                const isPlusOne =
+                card.dataset.isPlusOne === "true";
+
+                const selectedAttendance = card.querySelector(
+                "input[type='radio']:checked"
+                );
+
+                if (!selectedAttendance) {
+                formError.textContent =
+                    "Please select an RSVP response for every guest.";
+
+                card.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+                return;
+                }
+
+                const attending =
+                selectedAttendance.value === "true";
+
+                const nameInput = card.querySelector(
+                ".guest-name-input"
+                );
+
+                const dietaryInput = card.querySelector(
+                ".dietary-input"
+                );
+
+                const guestName = nameInput
+                ? nameInput.value.trim()
+                : "";
+
+                if (isPlusOne && attending && !guestName) {
+                formError.textContent =
+                    "Please enter the name of the attending plus one.";
+
+                nameInput.focus();
+                return;
+                }
+
+                responses.push({
+                guestId,
+                guestName,
+                attending,
+                dietary:
+                    attending
+                    ? dietaryInput.value.trim()
+                    : ""
+                });
+            }
+
+            const submitButton =
+                rsvpForm.querySelector(".rsvp-submit");
+
+            submitButton.disabled = true;
+            submitButton.textContent = "SUBMITTING...";
+
+            try {
+                for (const response of responses) {
+                const { data, error } = await supabaseClient.rpc(
+                    "save_guest_rsvp",
+                    {
+                    entered_code: activeInviteCode,
+                    selected_guest_id: response.guestId,
+                    selected_name: response.guestName,
+                    selected_attending: response.attending,
+                    selected_dietary: response.dietary,
+                    selected_notes: ""
+                    }
+                );
+
+                if (error || data !== true) {
+                    throw error || new Error(
+                    "The RSVP could not be saved."
+                    );
+                }
+                }
+
+                const { data, error } = await supabaseClient.rpc(
+                "complete_group_rsvp",
+                {
+                    entered_code: activeInviteCode,
+                    entered_email: contactEmail.value.trim()
+                }
+                );
+
+                if (error || data !== true) {
+                throw error || new Error(
+                    "The RSVP could not be completed."
+                );
+                }
+
+                document.querySelector(".rsvp-header").style.display = "none";
+                rsvpForm.style.display = "none";
+                successMessage.classList.add("active");
+
+                window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+                });
+            } catch (error) {
+                console.error(error);
+
+                formError.textContent =
+                "Something went wrong while saving your RSVP. Please try again.";
+            } finally {
+                submitButton.disabled = false;
+                submitButton.textContent = "SUBMIT RSVP";
+            }
+            }
+
+            function escapeHtml(value) {
+            return String(value)
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+            }
+        </script>
+    </body>
+</html>

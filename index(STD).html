@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="wedding.css">
+
+        <title> Laura & James Wedding</title>
+    </head>
+    <body>
+        <section class="hero">
+            <img src="Images/blue_flowers_left.png" class="side-image left-image" alt="">
+            <img src="Images/blue_flowers_right.png" class="side-image right-image" alt="">
+
+
+            <h1 id="names" >
+                Laura & James
+            </h1>
+
+            <div class="heart-line">
+                <span></span>
+                    <div class="heart">♡</div>
+                <span></span>
+            </div>
+
+            <p class="date">11 SEPETMBER 2027</p>
+                
+            <section class="save-the-date-message">
+                <h2>save the date</h2>
+                <p>
+                    We are so excited to celebrate with you.
+                    Please save the date for our wedding at Cropley House.
+                </p>
+                <p class="invitation-note">
+                    Formal invitation and RSVP details to follow.
+                </p>
+            </section>
+
+        
+
+            <section class="venue-section">
+                <div class="venue-content">
+                    <p class="small-script">the wedding venue</p>
+
+                    <h2>CROPLEY HOUSE</h2>
+
+                    <p class="location">BAULKHAM HILLS, NSW</p>
+
+                    <img
+                    src="images/cropley-house.png"
+                    alt="Cropley House"
+                    class="venue-image"
+                    >
+
+                    <p class="venue-message">
+                    We can't wait to celebrate with you<br>
+                    at our dream venue.
+                    </p>
+
+                    <div class="venue-heart">♡</div>
+                </div>
+            </section>
+        </section>
+
+            <script src="https://unpkg.com/lucide@latest"></script>
+
+            <script>lucide.createIcons();</script>
+        
+
+    </body>
+
+    <script>
+    const weddingDate = new Date("September 11, 2027 16:30:00").getTime();
+
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        if (distance <= 0) {
+        document.querySelector(".countdown").innerHTML =
+            "<p class='wedding-message'>Today is the day!</p>";
+        return;
+        }
+
+        
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor(
+        (distance % (1000 * 60 * 60)) / (1000 * 60)
+        );
+        const seconds = Math.floor(
+        (distance % (1000 * 60)) / 1000
+        );
+
+        document.getElementById("days").textContent = days;
+        document.getElementById("hours").textContent =
+        String(hours).padStart(2, "0");
+        document.getElementById("minutes").textContent =
+        String(minutes).padStart(2, "0");
+        document.getElementById("seconds").textContent =
+        String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+    </script>
+</html>
