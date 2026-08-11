@@ -177,7 +177,81 @@ body {
 /* ==================================================
    COUNTDOWN
 ================================================== */
+.countdown-section {
+    padding: 45px 20px;
+    text-align: center;
+}
 
+.countdown-section h2 {
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+
+.countdown {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin: 0 auto 30px;
+}
+
+.countdown-item {
+    display: flex;
+    min-width: 70px;
+    flex-direction: column;
+}
+
+.countdown-item span {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.countdown-item small {
+    margin-top: 8px;
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.calendar-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.calendar-button {
+    display: inline-block;
+    padding: 12px 20px;
+    border: 1px solid currentColor;
+    border-radius: 3px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.calendar-button:hover {
+    opacity: 0.7;
+}
+
+.wedding-message {
+    font-size: 1.5rem;
+}
+
+@media (max-width: 600px) {
+    .countdown {
+        gap: 12px;
+    }
+
+    .countdown-item {
+        min-width: 55px;
+    }
+
+    .countdown-item span {
+        font-size: 1.5rem;
+    }
+}
 .countdown {
   display: flex;
   justify-content: center;
