@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#45669f">
+
+  <link rel="stylesheet" href="wedding.css">
+  <link rel="icon" type="image/png" href="Images/mono.png">
+  <link rel="apple-touch-icon" href="Images/mono.png">
+
+  <title>Accommodation | Laura &amp; James' Wedding</title>
+
+  <style>
+    .accommodation-header {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 75px 20px 45px;
+      text-align: center;
+    }
+
+    .accommodation-header h1 {
+      margin: 8px 0 20px;
+      font-family: "Didot", "Cormorant Garamond", serif;
+      font-size: 36px;
+      font-weight: 400;
+      letter-spacing: 7px;
+      color: #365a98;
+    }
+
+    .accommodation-header > p:last-child,
+    .hotel-card p,
+    .booking-note,
+    .accommodation-footer {
+      font-family: "Montserrat", sans-serif;
+      font-size: 11px;
+      line-height: 1.8;
+      color: #6982ae;
+    }
+
+    .hotel-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      width: min(1000px, 90%);
+      margin: 0 auto;
+    }
+
+    .hotel-card {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      min-height: 380px;
+      padding: 35px 28px;
+      text-align: center;
+      background-color: #ffffff;
+      border: 1px solid #d9e1ed;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .hotel-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(67, 97, 145, 0.12);
+    }
+
+    .hotel-icon {
+      width: 34px;
+      height: 34px;
+      margin: 0 auto 16px;
+      stroke-width: 1.25;
+      color: #7891bb;
+    }
+
+    .hotel-card h2 {
+      margin: 0 0 12px;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      color: #45669f;
+    }
+
+    .best-for {
+      display: inline-block;
+      align-self: center;
+      margin: 0 0 15px;
+      padding: 6px 11px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 8px !important;
+      font-weight: 600;
+      line-height: 1.4 !important;
+      letter-spacing: 1.1px;
+      color: #45669f !important;
+      background-color: #eef3fa;
+      border-radius: 20px;
+    }
+
+    .hotel-location {
+      min-height: 40px;
+      margin: 0 0 12px;
+      font-weight: 600;
+    }
+
+    .hotel-description {
+      margin: 0;
+    }
+
+    .hotel-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: auto;
+      padding-top: 24px;
+    }
+
+    .hotel-buttons a,
+    .all-hotels a {
+      display: inline-block;
+      padding: 11px 15px;
+      font-family: "Montserrat", sans-serif;
+      font-size: 8px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-decoration: none;
+      color: #45669f;
+      background-color: #ffffff;
+      border: 1px solid #9fb1cf;
+      transition: color 0.2s ease, background-color 0.2s ease;
+    }
+
+    .hotel-buttons a:hover,
+    .all-hotels a:hover {
+      color: #ffffff;
+      background-color: #45669f;
+    }
+
+    .booking-note {
+      width: min(760px, 88%);
+      margin: 38px auto 0;
+      text-align: center;
+    }
+
+    .all-hotels {
+      margin: 30px auto 45px;
+      text-align: center;
+    }
+
+    .accommodation-footer {
+      padding: 35px 20px 55px;
+      text-align: center;
+      border-top: 1px solid #e1e6ef;
+    }
+
+    .accommodation-footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 800px) {
+      .accommodation-header {
+        padding: 55px 18px 35px;
+      }
+
+      .accommodation-header h1 {
+        font-size: 27px;
+        letter-spacing: 4px;
+      }
+
+      .hotel-grid {
+        grid-template-columns: 1fr;
+        max-width: 520px;
+      }
+
+      .hotel-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .accommodation-header h1 {
+        font-size: 23px;
+        letter-spacing: 3px;
+      }
+
+      .hotel-card {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar" aria-label="Main navigation">
+    <a href="index.html">HOME</a>
+    <a href="information.html">WEDDING INFORMATION</a>
+    <a href="accommodation.html" aria-current="page">ACCOMMODATION</a>
+  </nav>
+
+  <header class="accommodation-header">
+    <p class="small-script">where to stay</p>
+    <h1>ACCOMMODATION</h1>
+    <p>
+      For guests travelling to celebrate with us, we have gathered several
+      accommodation options around Baulkham Hills and the surrounding area.
+      Each option offers something a little different depending on your needs.
+    </p>
+  </header>
+
+  <main>
+    <section class="hotel-grid" aria-label="Nearby accommodation options">
+      <article class="hotel-card">
+        <i class="hotel-icon" data-lucide="hotel" aria-hidden="true"></i>
+        <h2>VISY DIOR HOTEL</h2>
+        <p class="best-for">BEST FOR: STAYING NEAR THE VENUE</p>
+        <p class="hotel-location">1 Columbia Court, Baulkham Hills</p>
+        <p class="hotel-description">
+          A convenient Norwest hotel for guests who would prefer to stay near
+          Cropley House and the surrounding Baulkham Hills area.
+        </p>
+
+        <div class="hotel-buttons">
+          <a href="https://www.booking.com/searchresults.html?ss=Visy+Dior+Hotel+Baulkham+Hills&amp;checkin=2027-09-10&amp;checkout=2027-09-12&amp;group_adults=2&amp;group_children=0&amp;no_rooms=1" target="_blank" rel="noopener noreferrer">CHECK AVAILABILITY</a>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Visy+Dior+Hotel+Baulkham+Hills" target="_blank" rel="noopener noreferrer">DIRECTIONS</a>
+        </div>
+      </article>
+
+      <article class="hotel-card">
+        <i class="hotel-icon" data-lucide="building-2" aria-hidden="true"></i>
+        <h2>QUEST BELLA VISTA</h2>
+        <p class="best-for">BEST FOR: FAMILIES AND GROUPS</p>
+        <p class="hotel-location">24 Norbrik Drive, Bella Vista</p>
+        <p class="hotel-description">
+          Spacious serviced apartments with studio, one-bedroom, two-bedroom
+          and three-bedroom options. Many apartments include kitchens, living
+          areas and laundry facilities.
+        </p>
+
+        <div class="hotel-buttons">
+          <a href="https://www.booking.com/hotel/au/quest-bella-vista.html?checkin=2027-09-10&amp;checkout=2027-09-12&amp;group_adults=2&amp;group_children=0&amp;no_rooms=1" target="_blank" rel="noopener noreferrer">CHECK AVAILABILITY</a>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Quest+Bella+Vista" target="_blank" rel="noopener noreferrer">DIRECTIONS</a>
+        </div>
+      </article>
+
+      <article class="hotel-card">
+        <i class="hotel-icon" data-lucide="cooking-pot" aria-hidden="true"></i>
+        <h2>PUNTHILL NORWEST</h2>
+        <p class="best-for">BEST FOR: A SELF-CONTAINED WEEKEND</p>
+        <p class="hotel-location">22 Brookhollow Avenue, Baulkham Hills</p>
+        <p class="hotel-description">
+          Apartment-style accommodation with kitchen facilities and a choice
+          of studio, one-bedroom and larger apartment configurations.
+        </p>
+
+        <div class="hotel-buttons">
+          <a href="https://www.booking.com/hotel/au/punthill-norwest.html?checkin=2027-09-10&amp;checkout=2027-09-12&amp;group_adults=2&amp;group_children=0&amp;no_rooms=1" target="_blank" rel="noopener noreferrer">CHECK AVAILABILITY</a>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Punthill+Norwest" target="_blank" rel="noopener noreferrer">DIRECTIONS</a>
+        </div>
+      </article>
+
+      <article class="hotel-card">
+        <i class="hotel-icon" data-lucide="sparkles" aria-hidden="true"></i>
+        <h2>PEPPERS THE HILLS LODGE</h2>
+        <p class="best-for">BEST FOR: A BOUTIQUE STAY</p>
+        <p class="hotel-location">1 Salisbury Road, Castle Hill</p>
+        <p class="hotel-description">
+          A boutique hotel with landscaped surroundings, onsite dining and
+          complimentary parking for guests wanting a more traditional hotel
+          experience.
+        </p>
+
+        <div class="hotel-buttons">
+          <a href="https://www.booking.com/hotel/au/grand-the-hills-lodge.html?checkin=2027-09-10&amp;checkout=2027-09-12&amp;group_adults=2&amp;group_children=0&amp;no_rooms=1" target="_blank" rel="noopener noreferrer">CHECK AVAILABILITY</a>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Peppers+The+Hills+Lodge" target="_blank" rel="noopener noreferrer">DIRECTIONS</a>
+        </div>
+      </article>
+
+      <article class="hotel-card">
+        <i class="hotel-icon" data-lucide="train-front" aria-hidden="true"></i>
+        <h2>MERCURE SYDNEY ROUSE HILL</h2>
+        <p class="best-for">BEST FOR: TRANSPORT AND DINING</p>
+        <p class="hotel-location">Commercial Road, Rouse Hill</p>
+        <p class="hotel-description">
+          A modern hotel near Rouse Hill Metro, Rouse Hill Town Centre and the
+          Fiddler dining precinct. A practical option for guests staying for
+          several days or travelling without a car.
+        </p>
+
+        <div class="hotel-buttons">
+          <a href="https://www.booking.com/hotel/au/mercure-sydney-rouse-hill.html?checkin=2027-09-10&amp;checkout=2027-09-12&amp;group_adults=2&amp;group_children=0&amp;no_rooms=1" target="_blank" rel="noopener noreferrer">CHECK AVAILABILITY</a>
+          <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Mercure+Sydney+Rouse+Hill" target="_blank" rel="noopener noreferrer">DIRECTIONS</a>
+        </div>
+      </article>
+    </section>
+
+    <p class="booking-note">
+      Booking links are pre-filled for Friday 10 September to Sunday
+      12 September 2027 for two adults. Guests can change the number of people,
+      rooms or dates on Booking.com. Availability may not appear until each
+      hotel releases its September 2027 rooms.
+    </p>
+
+    <div class="all-hotels">
+      <a href="https://www.booking.com/searchresults.html?ss=Cropley+House+Baulkham+Hills&amp;checkin=2027-09-10&amp;checkout=2027-09-12&amp;group_adults=2&amp;group_children=0&amp;no_rooms=1" target="_blank" rel="noopener noreferrer">VIEW MORE NEARBY ACCOMMODATION</a>
+    </div>
+  </main>
+
+  <footer class="accommodation-footer">
+    <p>
+      These suggestions are provided for convenience. Please book directly
+      through your preferred accommodation provider and review its terms.
+    </p>
+    <div class="venue-heart" aria-hidden="true">♡</div>
+  </footer>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
