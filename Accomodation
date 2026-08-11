@@ -192,7 +192,6 @@
 <body>
   <nav class="navbar" aria-label="Main navigation">
     <a href="index.html">HOME</a>
-    <a href="information.html">WEDDING INFORMATION</a>
     <a href="accommodation.html" aria-current="page">ACCOMMODATION</a>
   </nav>
 
