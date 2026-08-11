@@ -117,40 +117,102 @@
     </body>
 
     <script>
-    const weddingDate = new Date("September 11, 2027 16:30:00").getTime();
-
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const distance = weddingDate - now;
-
-        if (distance <= 0) {
-        document.querySelector(".countdown").innerHTML =
-            "<p class='wedding-message'>Today is the day!</p>";
-        return;
-        }
-
+        const wedding = {
+            title: "Laura & James' Wedding",
+            location: "Cropley House, Baulkham Hills NSW, Australia",
+            description: "Join us to celebrate the wedding of Laura and James.",
+            start: new Date("2027-09-11T16:30:00+10:00"),
+            end: new Date("2027-09-11T23:00:00+10:00")
+        };
         
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-        );
-        const minutes = Math.floor(
-        (distance % (1000 * 60 * 60)) / (1000 * 60)
-        );
-        const seconds = Math.floor(
-        (distance % (1000 * 60)) / 1000
-        );
-
-        document.getElementById("days").textContent = days;
-        document.getElementById("hours").textContent =
-        String(hours).padStart(2, "0");
-        document.getElementById("minutes").textContent =
-        String(minutes).padStart(2, "0");
-        document.getElementById("seconds").textContent =
-        String(seconds).padStart(2, "0");
-    }
-
-    updateCountdown();
-    setInterval(updateCountdown, 1000);
+        function updateCountdown() {
+            const countdown = document.querySelector(".countdown");
+            const distance = wedding.start.getTime() - Date.now();
+        
+            if (distance <= 0) {
+                countdown.innerHTML =
+                    "<p class='wedding-message'>Today is the day!</p>";
+                return;
+            }
+        
+            const days = Math.floor(distance / 86400000);
+            const hours = Math.floor((distance % 86400000) / 3600000);
+            const minutes = Math.floor((distance % 3600000) / 60000);
+            const seconds = Math.floor((distance % 60000) / 1000);
+        
+            document.getElementById("days").textContent = days;
+            document.getElementById("hours").textContent =
+                String(hours).padStart(2, "0");
+            document.getElementById("minutes").textContent =
+                String(minutes).padStart(2, "0");
+            document.getElementById("seconds").textContent =
+                String(seconds).padStart(2, "0");
+        }
+        
+        function formatCalendarDate(date) {
+            return date.toISOString()
+                .replace(/[-:]/g, "")
+                .replace(/\.\d{3}/, "");
+        }
+        
+        function createGoogleCalendarLink() {
+            const parameters = new URLSearchParams({
+                action: "TEMPLATE",
+                text: wedding.title,
+                dates:
+                    `${formatCalendarDate(wedding.start)}/` +
+                    `${formatCalendarDate(wedding.end)}`,
+                details: wedding.description,
+                location: wedding.location
+            });
+        
+            document.getElementById("google-calendar").href =
+                `https://calendar.google.com/calendar/render?${parameters}`;
+        }
+        
+        function downloadAppleCalendar() {
+            const calendarContent = [
+                "BEGIN:VCALENDAR",
+                "VERSION:2.0",
+                "PRODID:-//Laura and James Wedding//EN",
+                "CALSCALE:GREGORIAN",
+                "BEGIN:VEVENT",
+                `UID:laura-james-wedding-2027@ljwedding2027.com`,
+                `DTSTAMP:${formatCalendarDate(new Date())}`,
+                `DTSTART:${formatCalendarDate(wedding.start)}`,
+                `DTEND:${formatCalendarDate(wedding.end)}`,
+                `SUMMARY:${wedding.title}`,
+                `DESCRIPTION:${wedding.description}`,
+                `LOCATION:${wedding.location}`,
+                "STATUS:CONFIRMED",
+                "END:VEVENT",
+                "END:VCALENDAR"
+            ].join("\r\n");
+        
+            const calendarFile = new Blob(
+                [calendarContent],
+                { type: "text/calendar;charset=utf-8" }
+            );
+        
+            const downloadLink = document.createElement("a");
+            downloadLink.href = URL.createObjectURL(calendarFile);
+            downloadLink.download = "laura-and-james-wedding.ics";
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            downloadLink.remove();
+        
+            setTimeout(() => {
+                URL.revokeObjectURL(downloadLink.href);
+            }, 1000);
+        }
+        
+        createGoogleCalendarLink();
+        updateCountdown();
+        
+        const countdownTimer = setInterval(updateCountdown, 1000);
+        
+        document
+            .getElementById("apple-calendar")
+            .addEventListener("click", downloadAppleCalendar);
     </script>
 </html>
