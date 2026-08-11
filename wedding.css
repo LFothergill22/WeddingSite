@@ -1,3 +1,133 @@
+ChatGPT Plus
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+what now
+
+Worked for 42s
+The countdown looks large because your CSS contains two separate sets of .countdown rules, and the later set adds a 40px margin and wide item padding.
+
+Add this to the very bottom of wedding.css:
+
+/* Smaller countdown */
+.countdown-section {
+    padding: 20px 15px;
+}
+
+.countdown-section h2 {
+    margin-bottom: 12px;
+    font-size: 18px;
+}
+
+.countdown {
+    gap: 0;
+    margin: 15px auto 20px;
+}
+
+.countdown-item {
+    min-width: 55px;
+    padding: 0 12px;
+}
+
+.countdown-item span,
+.countdown-item .number {
+    font-size: 24px;
+}
+
+.countdown-item small,
+.countdown-item .label {
+    margin-top: 5px;
+    font-size: 7px;
+}
+
+.calendar-button {
+    padding: 9px 14px;
+    font-size: 11px;
+}
+
+@media (max-width: 600px) {
+    .countdown-item {
+        min-width: 42px;
+        padding: 0 7px;
+    }
+
+    .countdown-item span,
+    .countdown-item .number {
+        font-size: 20px;
+    }
+}
+Commit the change to GitHub. Cloudflare should automatically redeploy it. This reduces the countdown’s height, spacing, numbers and calendar buttons while preserving the current design.
+
+
+are nope, i dontlike that
+
+Fair—the previous change compressed the whole section too much. Remove that added CSS.
+
+If you only want the countdown numbers slightly smaller while keeping the existing spacing and elegant appearance, add this at the bottom instead:
+
+.countdown-item {
+    min-width: 65px;
+    padding: 0 16px;
+}
+
+.countdown-item span,
+.countdown-item .number {
+    font-size: 26px;
+}
+That leaves the heading, calendar buttons, labels and overall layout unchanged. It only makes the countdown itself a little smaller.
+
+
+
+Pasted text(20260811-045209).txt
+Document
+can you fix this
+
+Worked for 1m 22s
+Fixed. The countdown now has:
+
+A complete horizontal layout
+
+Smaller numbers without crushing the spacing
+
+Consistent desktop and mobile styling
+
+Clean calendar buttons
+
+No conflicting old .number or .label rules
+
+Corrected Northwell font format
+
+Balanced CSS braces
+
+Replace your existing wedding.css with this file, then commit it to GitHub:
+
+wedding-fixed.css
+
+
+wedding-fixed.css
+Code
+
+
+Library
+/
+wedding-fixed.css
+
+
 /* ==================================================
    FONTS
 ================================================== */
@@ -13,7 +143,7 @@
 
 @font-face {
   font-family: "Northwell";
-  src: url("Fonts/Northwell.ttf") format("woff2");
+  src: url("Fonts/Northwell.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -177,52 +307,89 @@ body {
 /* ==================================================
    COUNTDOWN
 ================================================== */
-/* Smaller countdown */
 .countdown-section {
-    padding: 20px 15px;
+  padding: 24px 20px 30px;
+  text-align: center;
 }
 
 .countdown-section h2 {
-    margin-bottom: 12px;
-    font-size: 18px;
+  margin: 0 0 18px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #45669f;
 }
 
 .countdown {
-    gap: 0;
-    margin: 15px auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 0 auto 22px;
+  font-family: "Montserrat", sans-serif;
+  color: #355a9a;
 }
 
 .countdown-item {
-    min-width: 55px;
-    padding: 0 12px;
+  display: flex;
+  flex-direction: column;
+  min-width: 58px;
+  padding: 0 15px;
+  text-align: center;
+  border-right: 1px solid #d7deea;
 }
 
-.countdown-item span,
-.countdown-item .number {
-    font-size: 24px;
+.countdown-item:last-child {
+  border-right: none;
 }
 
-.countdown-item small,
-.countdown-item .label {
-    margin-top: 5px;
-    font-size: 7px;
+.countdown-item span {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 1px;
+}
+
+.countdown-item small {
+  margin-top: 7px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 7px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.calendar-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .calendar-button {
-    padding: 9px 14px;
-    font-size: 11px;
+  display: inline-block;
+  padding: 10px 16px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #45669f;
+  background: transparent;
+  border: 1px solid #9fb1cf;
+  cursor: pointer;
 }
 
-@media (max-width: 600px) {
-    .countdown-item {
-        min-width: 42px;
-        padding: 0 7px;
-    }
+.calendar-button:hover {
+  color: #ffffff;
+  background-color: #45669f;
+}
 
-    .countdown-item span,
-    .countdown-item .number {
-        font-size: 20px;
-    }
+.wedding-message {
+  margin: 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 24px;
 }
 
 /* ==================================================
@@ -668,17 +835,21 @@ body {
     opacity: 0.7;
   }
 
+  .countdown-section {
+    padding: 18px 10px 25px;
+  }
+
   .countdown-item {
-    min-width: 55px;
-    padding: 0 10px;
+    min-width: 48px;
+    padding: 0 9px;
   }
 
-  .number {
-    font-size: 25px;
+  .countdown-item span {
+    font-size: 23px;
   }
 
-  .label {
-    font-size: 7px;
+  .countdown-item small {
+    font-size: 6px;
     letter-spacing: 1px;
   }
 
@@ -780,11 +951,11 @@ body {
   }
 
   .countdown-item {
-    min-width: 45px;
-    padding: 0 7px;
+    min-width: 42px;
+    padding: 0 6px;
   }
 
-  .number {
+  .countdown-item span {
     font-size: 21px;
   }
 
