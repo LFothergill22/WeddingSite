@@ -13,14 +13,14 @@
 
 @font-face {
   font-family: "Northwell";
-  src: url("Fonts/Northwell.woff2") format("woff2");
+  src: url("Fonts/Northwell.ttf") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Didot";
-  src: url("Fonts/Didot.woff2") format("woff2");
+  src: url("Fonts/didot.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
 }
