@@ -181,6 +181,29 @@ body {
   color: #274c77;
 }
 
+.wedding-intro {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.couple-names {
+  display: block;
+  font-size: 100px;
+  line-height: 1.15;
+}
+
+@media (max-width: 700px) {
+  .wedding-intro {
+    font-size: 28px;
+  }
+
+  .couple-names {
+    font-size: 65px;
+  }
+}
+
 
 /* ==================================================
    HEART DIVIDER
